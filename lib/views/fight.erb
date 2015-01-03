@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <p>Play!</p>
+
+  <ul style="list-style-type:none" >
+  <% @board.matrix.each do |row| %>
+    <li>
+    <% row.each do |elem| %>
+      <% if elem.state != nil %>
+        <%= " #{elem.state}" %>
+      <% else %>
+        <%= " *" %>
+      <% end %> 
+    <% end %>
+    </li>
+  <% end %>
+  </ul>
+  
+</body>
+</html>
