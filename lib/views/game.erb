@@ -20,6 +20,17 @@
     </li>
   <% end %>
   </ul>
-  
+
+  <form method='post' action='game/move'>
+    <div>
+        <label for="coord"><%= @current_player.name %> - Give <%=@current_player.symbol%> coordinates: </label>
+        <input type=text id="coord" name="coord" size="3" placeholder="A1">
+    </div>
+
+    <div>
+      <input type='submit' value="Put!">
+    </div>
+  </form>
+
 </body>
 </html>
