@@ -24,8 +24,6 @@ class Board
     return false if cell_already_set?(x,y)
 
     @matrix[x][y].state = player.symbol
-    # puts "Matrix #{x}#{y} value: #{@matrix[x][y].state}"
-    # true
   end
 
   def full?

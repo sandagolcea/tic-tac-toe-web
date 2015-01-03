@@ -30,8 +30,17 @@ class TicTacToe < Sinatra::Base
   end
 
   post '/game/move' do
-    'Hola bola'
-    session[:player1].name
+    coordinates = params[:coord]
+    @board = session[:board]
+    @player1 = session[:player1]
+    @player2 = session[:player2]
+
+    session[:board].set(coordinates,session[:current_player])
+
+    session[:current_player] = session[:current_player] == session[:player1] ? session[:player2] : session[:player1]
+    @current_player = session[:current_player]
+
+    erb :game
   end
   # start the server if ruby file executed directly
   run! if app_file == $0
