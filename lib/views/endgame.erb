@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <% require 'cowsay' %>
+</head>
+<body>
+  <% if @result == @current_player %>
+  <pre><%=Cowsay.say("#{@result.name.capitalize} wins!") %></pre>
+  <% else %>  
+    <p><%= @result %></p>
+  <% end %>
+</body>
+</html>

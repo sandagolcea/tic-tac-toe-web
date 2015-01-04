@@ -37,11 +37,34 @@ class TicTacToe < Sinatra::Base
 
     session[:board].set(coordinates,session[:current_player])
 
-    session[:current_player] = session[:current_player] == session[:player1] ? session[:player2] : session[:player1]
-    @current_player = session[:current_player]
+    if session[:board].game_over?(coordinates,session[:current_player]) || session[:board].full?
+      redirect '/endgame'
+    else  
+      session[:current_player] = session[:current_player] == session[:player1] ? session[:player2] : session[:player1]
+      @current_player = session[:current_player]
 
-    erb :game
+      erb :game
+    end
+
   end
+
+  get '/endgame' do
+      @current_player = session[:current_player]
+
+      if session[:board].full?
+        @result = "It's a draw!"
+      else
+        @result = @current_player
+      end
+    erb :endgame
+  end
+
+  
+    # stop when board is full
+    # stop when game is over
+    # redirect to showing winner or draw when game is over
+    
+  
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
